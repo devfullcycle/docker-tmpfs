@@ -1,0 +1,64 @@
+version: '3'
+
+services:
+
+  #node
+  app:
+    build: .
+    volumes:
+      - .:/home/node/app
+
+
+  mysql_tmpfs:
+    profiles:
+      - mysql
+    image: mysql:8.0.30-debian
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=fullcycle
+    tmpfs:
+      - /var/lib/mysql
+  
+  mysql:
+    profiles:
+      - mysql
+    image: mysql:8.0.30-debian
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=fullcycle
+  
+  postgres_tmpfs:
+    profiles:
+      - postgres
+    image: postgres:13-alpine
+    environment:
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=fullcycle
+    tmpfs:
+      - /var/lib/postgresql/data
+  
+  postgres:
+    profiles:
+      - postgres
+    image: postgres:13-alpine
+    environment:
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=fullcycle
+  
+  mongo_tmpfs:
+    profiles:
+      - mongo
+    image: mongo:6.0.5 
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+    tmpfs:
+      - /data/db
+  
+  mongo:
+    profiles:
+      - mongo
+    image: mongo:6.0.5 
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root

@@ -1,0 +1,21 @@
+{
+  "name": "docker-tmpfs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "ts-node": "^10.9.1"
+  },
+  "dependencies": {
+    "mongodb": "^5.7.0",
+    "mysql2": "^3.6.0",
+    "pg": "^8.11.2",
+    "typeorm": "^0.3.17"
+  }
+}
